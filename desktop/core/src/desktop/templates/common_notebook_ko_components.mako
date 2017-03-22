@@ -364,10 +364,12 @@ except ImportError, e:
           function(resp) {
             if (resp.status == 0) {
               if (IS_HUE_4) {
-                if (self.saveTarget() == '') {
-                  huePubSub.publish('open.fb.folder', resp.watch_url.replace(/\/filebrowser\/view=/g, ''));
+                $(".modal-backdrop").remove();
+                if (self.saveTarget() == 'hdfs-file') {
+                  huePubSub.publish('open.fb.file', resp.watch_url.replace(/\/filebrowser\/view=/g, ''));
                 } else {
                   if (resp.history_uuid) {
+                    $("#saveResultsModal").hide();
                     huePubSub.publish('notebook.task.submitted', resp.history_uuid);
                   } else if (resp && resp.message) {
                     $(document).trigger("error", resp.message);

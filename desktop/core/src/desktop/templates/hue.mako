@@ -193,7 +193,7 @@ ${ hueIcons.symbols() }
           %>
           <button class="btn"
           % if view_profile:
-            data-bind="click: function(){ onePageViewModel.currentApp('home') }" title="${ _('View Profile') if is_ldap_setup else _('Edit Profile') }"
+            data-bind="click: function(){ onePageViewModel.currentApp('useradmin_users') }" title="${ _('View Profile') if is_ldap_setup else _('Edit Profile') }"
           % endif
           >
           ${ user.username }
@@ -576,7 +576,7 @@ ${ assist.assistPanel() }
             if (viewModel && viewModel.selectedNotebook && viewModel.selectedNotebook()) {
               viewModel.selectedNotebook().selectedSnippet(type);
               viewModel.editorType(type);
-              viewModel.newNotebook();
+              viewModel.newNotebook(type);
             }
           })
         }
